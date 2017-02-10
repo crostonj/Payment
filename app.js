@@ -20,9 +20,11 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+var StarsRouter = require('./StarsRouter')();
 
+app.use('/', StarsRouter);
 
-app.post('/', function (req, res) {
+app.post('/old', function (req, res) {
 
     var payment = {
         amount: req.body.amount,
