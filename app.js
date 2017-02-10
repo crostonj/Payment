@@ -25,7 +25,10 @@ app.post('/', function (req, res) {
     };
 
     if (payment.amount > 300)
+    {
+        res.send('Payment too high');
         res.status(400);
+    }
     else
         res.status(200);
     res.send(payment);
