@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var app = express();
+var host = process.argv[2] != null ? process.argv[2] : "localhost";
 var port = 4002;
 var cors = require('cors');
 
@@ -47,8 +48,8 @@ app.get('/', function (req, res) {
     res.send('hello')
 });
 
-app.listen(port,  process.argv[2], function (err) {
-    console.log('running server on port ' + port);
+app.listen(port,  host, function (err) {
+    console.log('running server ' + host + ' on port ' + port);
 });
 
 
