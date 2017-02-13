@@ -45,9 +45,9 @@ module.exports =
         return {
             Middleware: function (req, res, next) {
                 //Secure all routes
-                if (!req.user) {
+                //if (!req.user) {
                     //    res.redirect('/');
-                }
+                //}
                 next();
             },
 
@@ -83,8 +83,9 @@ module.exports =
                     });
                 });
 
-                post_req.write(post_data);
                 post_req.end();
+
+                res.send(post_data);
             }
         }
     }
