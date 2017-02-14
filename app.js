@@ -1,8 +1,12 @@
+require('dotenv').config();
+
 var express = require('express');
 var bodyParser = require('body-parser');
+var common = require("./common");
 
 var app = express();
-var host = process.argv[2] != null ? process.argv[2] : "localhost";
+//var host = process.argv[2] != null ? process.argv[2] : "localhost";
+var host = process.env.HOSTIP;
 var port = 4002;
 var cors = require('cors');
 
@@ -20,7 +24,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-var StarsRouter = require('./StarsRouter')();
+var StarsRouter = require('./Stars/StarsRouter')();
 
 app.use('/', StarsRouter);
 
