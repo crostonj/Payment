@@ -34,7 +34,7 @@ app.use('/', StarsRouter);
 app.get('/download', function (req, res) {
     var name = req.query.name;
     if (name != null) {
-        var file = __dirname + '\\upload-folder\\' + name;
+        var file = __dirname + '/upload-folder/' + name;
         res.download(file); // Set disposition and send it.
     }
 });
