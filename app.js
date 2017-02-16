@@ -1,23 +1,26 @@
 require('dotenv').config();
 
-var express = require('express');
+var express = require('express'),
+    swagger = require("swagger-node-express");;
 var bodyParser = require('body-parser');
 var common = require("./common");
 
 var app = express();
-//var host = process.argv[2] != null ? process.argv[2] : "localhost";
-var host = process.env.HOSTIP;
+
+
+
+var host = process.argv[2] != null ? process.argv[2] : "localhost";
+//var host = process.env.HOSTIP;
 var port = 4002;
 var cors = require('cors');
 
 //app.use(cors);
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -27,6 +30,15 @@ app.use(bodyParser.urlencoded({
 var StarsRouter = require('./Stars/StarsRouter')();
 
 app.use('/', StarsRouter);
+
+app.get('/download', function (req, res) {
+    var name = req.query.name;
+    if (name != null) {
+        var file = __dirname + '\\upload-folder\\' + name;
+        res.download(file); // Set disposition and send it.
+    }
+});
+
 
 app.post('/old', function (req, res) {
 
@@ -38,13 +50,10 @@ app.post('/old', function (req, res) {
         effectiveDate: req.body.effectiveDate
     };
 
-    if (payment.amount > 300)
-    {
+    if (payment.amount > 300) {
         res.status(400);
         res.send('Payment too high');
-    }
-    else
-    {
+    } else {
         res.status(200);
         res.send(payment);
     }
@@ -54,9 +63,6 @@ app.get('/', function (req, res) {
     res.send('hello')
 });
 
-app.listen(port,  host, function (err) {
+app.listen(port, host, function (err) {
     console.log('running server ' + host + ' on port ' + port);
 });
-
-
-

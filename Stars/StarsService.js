@@ -46,7 +46,7 @@ module.exports =
             Middleware: function (req, res, next) {
                 //Secure all routes
                 //if (!req.user) {
-                    //    res.redirect('/');
+                //    res.redirect('/');
                 //}
                 next();
             },
@@ -84,6 +84,8 @@ module.exports =
                 });
 
                 post_req.end();
+                res.setHeader('Content-Type', 'application/json');
+                res.send(swaggerSpec);
 
                 res.send(post_data);
             }
