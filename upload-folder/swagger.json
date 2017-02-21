@@ -1,0 +1,130 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "description",
+        "version": "0.0.0",
+        "title": "title"
+    },
+    "paths": {
+        "/payment": {
+            "get": {
+                "summary": "Payment",
+                "description": "Get a payment",
+                "operationId": "paymentGET",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body_id",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/payment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "asd",
+                        "schema": {
+                            "$ref": "#/definitions/starspayment"
+                        }
+                    }
+                },
+                "x-swagger-router-controller": "Default"
+            }
+        }
+    },
+    "definitions": {
+        "payment": {
+            "properties": {
+                "uid": {
+                    "type": "string"
+                },
+                "paymentAmount": {
+                    "type": "string"
+                },
+                "accountNumber": {
+                    "type": "string"
+                },
+                "accountType": {
+                    "type": "string"
+                },
+                "routingNumber": {
+                    "type": "string"
+                }
+            }
+        },
+        "starspayment": {
+            "properties": {
+                "Description": {
+                    "type": "string"
+                },
+                "Description1": {
+                    "type": "string"
+                },
+                "ReceivedDate": {
+                    "type": "string"
+                },
+                "PaymentID": {
+                    "type": "integer"
+                },
+                "Principal": {
+                    "type": "integer"
+                },
+                "Interest": {
+                    "type": "integer"
+                },
+                "Fees": {
+                    "type": "integer"
+                },
+                "NoteID": {
+                    "type": "integer"
+                },
+                "DueDay": {
+                    "type": "integer"
+                },
+                "ConfirmationNumber": {
+                    "type": "integer"
+                },
+                "SourceType": {
+                    "type": "string"
+                },
+                "PaymentNotes": {
+                    "type": "string"
+                },
+                "IsDuplicate": {
+                    "type": "string"
+                },
+                "DuplicateMessage": {
+                    "type": "string"
+                },
+                "EffectiveDate": {
+                    "type": "string"
+                },
+                "NoteDate": {
+                    "type": "string"
+                },
+                "LenderID": {
+                    "type": "string"
+                },
+                "ParticipantID": {
+                    "type": "string"
+                },
+                "PaymentAmount": {
+                    "type": "string"
+                },
+                "NoteIDList": {
+                    "type": "string"
+                },
+                "AccountNumber": {
+                    "type": "string"
+                },
+                "AccountType": {
+                    "type": "string"
+                },
+                "RoutingNumber": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
